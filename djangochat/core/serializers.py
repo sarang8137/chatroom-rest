@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from room.models import Room
+from room.models import Room,Message
 
 
 
@@ -15,3 +15,11 @@ class RoomSer(serializers.ModelSerializer):
     class Meta:
         model=Room
         fields='__all__'
+
+class ChatSer(serializers.ModelSerializer):
+    # room_id=RoomSer()
+    user=serializers.CharField(read_only=True)
+    class Meta:
+        model=Message
+        fields='__all__'
+      
